@@ -1,50 +1,79 @@
-import React, { Component } from "react"
-import { Menu, Item, Sidebar, Tab, Grid, Icon, Container } from 'semantic-ui-react'
-import { StockListingRow } from './styledComponents'
-import TimeRange, { ranges, increments } from './TimeRange'
+import React from "react"
+import _ from 'lodash'
+import { Menu, Item, Sidebar, Tab, Grid, Icon, Container, Search } from 'semantic-ui-react'
+import { ranges, increments } from './TimeRange'
 import LineChart from './Graph'
+import StockListing from './StockListing'
+import axios from "../axiosConfig";
 
-class StockListing extends React.Component {
-  render() {
-    return (
-      <Item style =
-        {{
-          border: '1px solid #707070',
-          margin: '0px',
-          marginBottom: '-1px',
-        }}
-      >
-        <Item.Content>
-          <Item.Description style = {{color: 'white'}} >
-            <Grid style = {{margin: '1em', marginBottom: '0.5em'}}>
-              <StockListingRow columns={3}>
-                <Grid.Column width={3}>
-                  <Icon color='blue' name='minus' size='large'/>
-                </Grid.Column>
-                <Grid.Column width={4}>
-                  {this.props.symbol}
-                </Grid.Column>
-                <Grid.Column width={3}>
-                  {this.props.symbol}
-                </Grid.Column>
-              </StockListingRow>
-              <StockListingRow>
-                <Grid.Column width={3}>
-                  hi
-                </Grid.Column>
-              </StockListingRow>
-            </Grid>
-          </Item.Description>
-        </Item.Content>
-      </Item>
-    )
+function searchReducer(state, action) {
+  switch (action.type) {
+    case 'CLEAN_QUERY':
+      return { results: [], value: '' }
+    case 'START_SEARCH':
+      return { ...state, value: action.query }
+    case 'FINISH_SEARCH':
+      return { ...state, results: action.results }
+
+    default:
+      throw new Error()
   }
 }
 
+function StockSearch(props) {
+  const [state, dispatch] = React.useReducer(searchReducer, { results: [], value: '' })
+  const timeoutRef = React.useRef()
+  const handleSearchChange = React.useCallback((e, data) => {
+    clearTimeout(timeoutRef.current)
+    dispatch({ type: 'START_SEARCH', query: data.value })
+
+    timeoutRef.current = setTimeout(() => {
+      if (data.value.length === 0) {
+        dispatch({ type: 'CLEAN_QUERY' })
+        return
+      }
+
+      const re = new RegExp(_.escapeRegExp(data.value), 'i')
+      const isMatch = (result) => re.test(result.symbol)
+
+      dispatch({
+        type: 'FINISH_SEARCH',
+        results: _.filter(props.availableStocks, isMatch),
+      })
+    }, 300)
+  }, [])
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timeoutRef.current)
+    }
+  }, [])
+
+  return (
+    <Search
+      input = {{
+        transparent: true,
+        placeholder:" Search",
+        input: {
+          style: {
+            color: "white"
+          }
+        }
+      }}
+      icon = {null}
+      onResultSelect = {(e, data) => {
+        props.addStock(data.result.symbol)
+        dispatch({ type: 'CLEAN_QUERY' })
+      }}
+      resultRenderer = {({symbol}) => <div>{symbol}</div>}
+      onSearchChange = {handleSearchChange}
+      results = {state.results}
+      value = {state.value}
+    />
+  )
+}
+
 class GraphTab extends React.Component {
-  constructor(props) {
-    super(props)
-  }
 
   handleRangeClick(e, { name }) {
     this.props.rangeOnChange(name)
@@ -52,6 +81,23 @@ class GraphTab extends React.Component {
 
   handleIncrementClick(e, { name }) {
     this.props.incrementOnChange(name)
+  }
+
+  handleAddStock(stockSymbol) {
+    var newStocks = this.props.stocks.slice()
+    var colors = ["#B84D46", "#406FAE", "#508A4E", "#EA8539", "#5D43A0"]
+    var stockColor = colors[(newStocks.length) % 5]
+    newStocks.splice(newStocks.length, 0, {
+      symbol: stockSymbol,
+      color: stockColor,
+    })
+    this.props.stocksOnChange(newStocks)
+  }
+
+  handleDeleteStock(index) {
+    var newStocks = this.props.stocks.slice()
+    newStocks.splice(index, 1)
+    this.props.stocksOnChange(newStocks)
   }
 
   render() {
@@ -113,19 +159,39 @@ class GraphTab extends React.Component {
           {/* StockListings */}
           <Sidebar
             as = {Item.Group}
+            className = 'stock-listing'
             animation = 'overlay'
             direction = {'right'}
             visible
             width = 'wide'
             style = {{background: '#202225'}}
           >
-            {this.props.stocks.map((symbol) => {
+            {this.props.stocks.map((stock, index) => {
               return (
                 <StockListing
-                  symbol = {symbol}
+                  symbol = {stock.symbol}
+                  color = {stock.color}
+                  onDelete = {() => this.handleDeleteStock(index)}
                 />
               )
             })}
+
+            <Item style =
+              {{
+                border: '1px solid #707070',
+                margin: '0px',
+                marginBottom: '10em',
+                padding: '1em',
+                paddingLeft: '2em',
+              }}
+            >
+              <Item.Content>
+                <StockSearch
+                  availableStocks = {this.props.availableStocks}
+                  addStock = {(stockSymbol) => this.handleAddStock(stockSymbol)}
+                />
+              </Item.Content>
+            </Item>
           </Sidebar>
 
           {/* Graph */}
@@ -134,6 +200,7 @@ class GraphTab extends React.Component {
               <LineChart
                 range = {this.props.range}
                 increment = {this.props.increment}
+                stocks = {this.props.stocks}
               />
             </Container>
           </Sidebar.Pusher>

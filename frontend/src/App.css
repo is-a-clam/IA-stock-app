@@ -4,3 +4,27 @@
   padding-right: 350px;
   width: auto;
 }
+
+.stock-listing {
+  font-family: Roboto Mono !important;
+}
+
+.stock-info-row {
+  padding: 0px !important;
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  border-bottom: 1px solid;
+  border-color: #8F9296;
+  width: inherit;
+}
+
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  color: #5A65EA;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}

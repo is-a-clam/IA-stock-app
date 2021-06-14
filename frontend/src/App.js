@@ -1,12 +1,46 @@
-import React, { Component } from 'react'
+import React from 'react'
 import TabSystem from './components/TabSystem'
+import Accounts from './components/Accounts'
+import axios from './axiosConfig';
 import './App.css'
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      loggedIn: false
+    }
+  }
+
+  componentDidMount() {
+    this.checkLogin()
+  }
+
+  checkLogin() {
+    axios
+      .get("api/login-set-cookie/")
+      .then((res) => {console.log(res)})
+      .catch((err) => {console.log(err)})
+    axios
+      .get("api/user-profile/")
+      .then((res) => {this.setState({loggedIn: true})})
+      .catch((err) => {this.setState({loggedIn: false})})
+  }
+
   render() {
-    return (
-      <TabSystem />
-    )
+    if (this.state.loggedIn) {
+      return (
+        <TabSystem />
+      )
+    }
+    else {
+      return (
+        <Accounts
+          checkLogin={this.checkLogin.bind(this)}
+        />
+      )
+    }
   }
 }
 
