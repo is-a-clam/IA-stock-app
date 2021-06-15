@@ -8,6 +8,6 @@
     "npm": "6.14.11"
   },
   "scripts": {
-    "start": "npm start --prefix frontend/"
+    "start": "npm build --prefix frontend/ && npm start --prefix frontend/"
   }
 }
