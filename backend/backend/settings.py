@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,6 +75,10 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 ALLOWED_HOSTS=['*']
 CORS_ALLOWED_ORIGINS=['http://localhost:3000', 'http://localhost:8000']
 CORS_ALLOW_CREDENTIALS=True
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
