@@ -10,5 +10,5 @@
     "build": "npm install --prefix frontend/ && npm run build --prefix frontend/",
     "deploy": "cp -a frontend/build/. public/",
     "heroku-postbuild": "npm run build && npm run deploy"
-  }c
+  }
 }
