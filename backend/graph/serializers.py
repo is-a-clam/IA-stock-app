@@ -27,6 +27,13 @@ class StockDayBar(serializers.ModelSerializer):
             'dayBar',
         )
 
+class StockMinuteBar(serializers.ModelSerializer):
+    class Meta:
+        model = Stock
+        fields = (
+            'minuteBar',
+        )
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserProfile

@@ -1190,3 +1190,346 @@ src/components/GraphTab.js
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 34:12:  'Dimmer' is not defined  react/jsx-no-undef
+  Line 35:14:  'Loader' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 26:31:  'treu' is not defined    no-undef
+  Line 34:12:  'Dimmer' is not defined  react/jsx-no-undef
+  Line 35:14:  'Loader' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 34:12:  'Dimmer' is not defined  react/jsx-no-undef
+  Line 35:14:  'Loader' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+Syntax error: Unexpected token, expected "," (55:19)
+
+  53 |                 {
+  54 |                   label: stock.symbol
+> 55 |                   borderColor: stock.color,
+     |                   ^
+  56 |                   backgroundColor: '#00000000',
+  57 |                   borderWidth: 2,
+  58 |                   data: this.state.data[stock.symbol].map((dayData) => {
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 16:3:  Lifecycle method should be static: getDerivedStateFromProps  react/no-typos
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 16:3:  Lifecycle method should be static: getDerivedStateFromProps  react/no-typos
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+Syntax error: Unexpected token, expected "," (12:7)
+
+  10 |     this.state = {
+  11 |       state: "SHOW"
+> 12 |       loading: false,
+     |       ^
+  13 |       data: {},
+  14 |     }
+  15 |   }
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 3:42:  'Icon' is defined but never used                                                                                                  no-unused-vars
+  Line 7:8:   'axios' is defined but never used                                                                                                 no-unused-vars
+  Line 44:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 29:5:  Expected an assignment or function call and instead saw an expression  no-unused-expressions
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 29:5:  Expected an assignment or function call and instead saw an expression  no-unused-expressions
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/Graph.js
+  Line 29:5:   Expected an assignment or function call and instead saw an expression  no-unused-expressions
+  Line 53:28:  'data' is not defined                                                  no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 29:5:  Expected a default case  default-case
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+

@@ -1,10 +1,9 @@
 import React from "react"
 import _ from 'lodash'
-import { Menu, Item, Sidebar, Tab, Grid, Icon, Container, Search } from 'semantic-ui-react'
+import { Menu, Item, Sidebar, Tab, Grid, Container, Search } from 'semantic-ui-react'
 import { ranges, increments } from './TimeRange'
 import LineChart from './Graph'
 import StockListing from './StockListing'
-import axios from "../axiosConfig";
 
 function searchReducer(state, action) {
   switch (action.type) {

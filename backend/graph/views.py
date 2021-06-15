@@ -3,7 +3,7 @@ import numpy as np
 from datetime import datetime, date, timezone, timedelta
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, permissions, authentication, views, response
-from .serializers import StockDayBar, StockName, StockKeyInfo, UserSerializer
+from .serializers import StockDayBar, StockMinuteBar, StockName, StockKeyInfo, UserSerializer
 from .models import Stock, UserProfile
 from .constants import IEX_DOMAIN, IEX_KEY
 
@@ -64,7 +64,10 @@ def getDayBar(instance):
     # Get any remaining un-updated data
     lastDay = date.fromisoformat(currDayBar[-1]["date"])
     for n in range(int((date.today() - lastDay).days)):
-        getDay = (lastDay + timedelta(n+1)).strftime('%Y%m%d')
+        dayToGet = lastDay + timedelta(n+1)
+        if (dayToGet.weekday() >= 5):
+            continue
+        getDay = dayToGet.strftime('%Y%m%d')
         url = IEX_DOMAIN + "/stock/" + instance.symbol + "/chart/date/" + getDay + "?chartByDay=true"
         r = requests.get(url, params=payload)
 
@@ -76,6 +79,39 @@ def getDayBar(instance):
                     "price": r.json()[0]["close"],
                 })
                 instance.dayBar = currDayBar
+                instance.save()
+            except Exception as e:
+                print("ERROR: " + str(e))
+
+def getMinuteBar(instance):
+    currMinuteBar = instance.minuteBar.copy()
+    payload = {"token": IEX_KEY}
+
+
+    if not currMinuteBar:
+        # If no data, get data from last month
+        lastDay = date.today() - timedelta(days = 30)
+    else:
+        # Else, get data from last updated day
+        lastDay = datetime.fromisoformat(currMinuteBar[-1]["date"]).date()
+
+    for n in range(int((date.today() - lastDay).days)):
+        dayToGet = lastDay + timedelta(n+1)
+        if (dayToGet.weekday() >= 5):
+            continue
+        getDay = dayToGet.strftime('%Y%m%d')
+        url = IEX_DOMAIN + "/stock/" + instance.symbol + "/chart/date/" + getDay
+        r = requests.get(url, params=payload)
+
+        # If r is not empty
+        if r.json():
+            try:
+                for data in r.json():
+                    currMinuteBar.append({
+                        "date": data["date"] + "T" + data["minute"] + ":00",
+                        "price": data["close"],
+                    })
+                instance.minuteBar = currMinuteBar
                 instance.save()
             except Exception as e:
                 print("ERROR: " + str(e))
@@ -109,6 +145,7 @@ class StockAdd(views.APIView):
         updateKeyStats(newStock)
         updateStockQuote(newStock)
         getDayBar(newStock)
+        getMinuteBar(newStock)
 
         return response.Response({"status": "Success"})
 
@@ -138,11 +175,16 @@ class StockKeyInfo(generics.RetrieveAPIView):
 
         # Update Bar values
         getDayBar(instance)
+        getMinuteBar(instance)
 
         return super().retrieve(request, *args, **kwargs)
 
 class StockDayBar(generics.RetrieveAPIView):
     serializer_class = StockDayBar
+    queryset = Stock.objects.all()
+
+class StockMinuteBar(generics.RetrieveAPIView):
+    serializer_class = StockMinuteBar
     queryset = Stock.objects.all()
 
 class UserView(generics.RetrieveUpdateAPIView):
