@@ -1,2 +1,2 @@
 web: python backend/manage.py runserver
-release: python manage.py migrate
+release: python backend/manage.py migrate
