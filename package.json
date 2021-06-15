@@ -7,7 +7,11 @@
     "npm": "6.14.11"
   },
   "scripts": {
-    "start": "npm start --prefix frontend/",
     "build": "npm build --prefix frontend/"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend/ && npm build --prefix frontend/",
+    "deploy": "cp -a frontend/build/. public/",
+    "heroku-postbuild": "npm build && npm deploy"
   }
 }
