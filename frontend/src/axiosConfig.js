@@ -2,7 +2,7 @@ import axios from "axios"
 
 const backendURIs = {
   development: 'http://localhost:8000/',
-  production: 'http://stock-app-cs-ia.herokuapp.com/',
+  production: 'https://stock-app-cs-ia.herokuapp.com/',
 }
 
 axios.defaults.xsrfHeaderName = 'X-CSRFToken'
