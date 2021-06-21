@@ -16,3 +16,57 @@ src/components/GraphTab.js
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
