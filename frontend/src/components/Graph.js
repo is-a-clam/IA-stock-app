@@ -115,7 +115,9 @@ class LineChart extends React.Component {
     var increment = TimeRange.fromString(this.props.increment)
     if (increment.unit === "minute" || increment.unit === "hour") {
       for (let stockSymbol in this.state.minuteData) {
-        let stockData = []
+        let stockData = this.state.labels.map((label) => {
+          return this.state.minuteData[stockSymbol][label]
+        })
         let stockColor = this.props.stocks.filter((stock) => {
           return stock.symbol === stockSymbol
         })[0].color
@@ -130,7 +132,9 @@ class LineChart extends React.Component {
     }
     else {
       for (let stockSymbol in this.state.dayData) {
-        let stockData = []
+        let stockData = this.state.labels.map((label) => {
+          return this.state.dayData[stockSymbol][label]
+        })
         let stockColor = this.props.stocks.filter((stock) => {
           return stock.symbol === stockSymbol
         })[0].color
