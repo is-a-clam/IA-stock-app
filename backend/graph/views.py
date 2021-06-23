@@ -88,7 +88,7 @@ def getMinuteBar(instance):
         lastDay = date.today() - timedelta(days = 30)
     else:
         # Else, get data from last updated day
-        lastDay = datetime.fromisoformat(currMinuteBar[-1]["date"]).date()
+        lastDay = datetime.fromisoformat(list(currMinuteBar.keys())[-1]).date()
 
     for n in range(int((date.today() - lastDay).days)):
         dayToGet = lastDay + timedelta(n+1)
