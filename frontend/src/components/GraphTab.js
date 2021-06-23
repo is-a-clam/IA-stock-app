@@ -1,7 +1,7 @@
 import React from "react"
 import _ from 'lodash'
 import { Menu, Item, Sidebar, Tab, Grid, Container, Search } from 'semantic-ui-react'
-import { ranges, increments } from './TimeRange'
+import TimeRange from './TimeRange'
 import LineChart from './Graph'
 import StockListing from './StockListing'
 
@@ -75,11 +75,19 @@ function StockSearch(props) {
 class GraphTab extends React.Component {
 
   handleRangeClick(e, { name }) {
+    var newRange = TimeRange.fromString(name)
+    var currIncrement = TimeRange.fromString(this.props.increment)
+    var newIncrement = TimeRange.getIncrementFromRange(newRange, currIncrement)
     this.props.rangeOnChange(name)
+    this.props.incrementOnChange(newIncrement.short)
   }
 
   handleIncrementClick(e, { name }) {
+    var newIncrement = TimeRange.fromString(name)
+    var currRange = TimeRange.fromString(this.props.range)
+    var newRange = TimeRange.getRangeFromIncrement(newIncrement, currRange)
     this.props.incrementOnChange(name)
+    this.props.rangeOnChange(newRange.short)
   }
 
   handleAddStock(stockSymbol) {
@@ -118,7 +126,7 @@ class GraphTab extends React.Component {
                   Range:
                 </Menu.Item>
 
-                {ranges().map((timeRange) => {
+                {TimeRange.ranges().map((timeRange) => {
                   return (
                     <Menu.Item
                       name = {timeRange.short}
@@ -138,7 +146,7 @@ class GraphTab extends React.Component {
                   Increment:
                 </Menu.Item>
 
-                {increments().map((timeRange) => {
+                {TimeRange.increments().map((timeRange) => {
                   return (
                     <Menu.Item
                       name = {timeRange.short}

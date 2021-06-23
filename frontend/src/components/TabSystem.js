@@ -46,7 +46,7 @@ class TabSystem extends React.Component {
       label: 'newGraph',
       range: TimeRange.ONE_DAY.short,
       increment: TimeRange.ONE_MIN.short,
-      stocks: ["AAPL"]
+      stocks: []
     })
     this.setState({tabs: newTabs})
     axios.put("api/user-profile/", {tabs: newTabs})

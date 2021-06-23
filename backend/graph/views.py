@@ -49,12 +49,9 @@ def getDayBar(instance):
         r = requests.get(IEX_DOMAIN + "/stock/" + instance.symbol + "/chart/5y", params=payload)
         try:
             data = np.array(r.json())
-            newData = []
+            newData = {}
             for dayData in np.nditer(data, flags=["refs_ok"], op_flags=["readwrite"]):
-                newData.append({
-                    "date": dayData.item()["date"],
-                    "price": dayData.item()["close"],
-                })
+                newData[dayData.item()["date"]] = dayData.item()["close"]
             instance.dayBar = newData
             instance.save()
         except Exception as e:
@@ -74,10 +71,7 @@ def getDayBar(instance):
         # If r is not empty
         if r.json():
             try:
-                currDayBar.append({
-                    "date": r.json()[0]["date"],
-                    "price": r.json()[0]["close"],
-                })
+                currDayBar[r.json()[0]["date"]] = r.json()[0]["close"]
                 instance.dayBar = currDayBar
                 instance.save()
             except Exception as e:
@@ -107,10 +101,8 @@ def getMinuteBar(instance):
         if r.json():
             try:
                 for data in r.json():
-                    currMinuteBar.append({
-                        "date": data["date"] + "T" + data["minute"] + ":00",
-                        "price": data["close"],
-                    })
+                    dateString = data["date"] + "T" + data["minute"] + ":00"
+                    currMinuteBar[dateString] = data["close"]
                 instance.minuteBar = currMinuteBar
                 instance.save()
             except Exception as e:
@@ -123,12 +115,12 @@ def marketOpen():
     if currTime.weekday() >= 5:
         return False
 
-    # Check if time is between 4am to 8pm
-    if currTime.hour >= 20 or currTime.hour <= 3:
+    # Check if time is between 9am to 4pm
+    if currTime.hour >= 16 or currTime.hour < 9:
         return False
 
-    # Check if time is between 4:30am to 8pm
-    if currTime.hour == 4 and currTime.minute <= 30:
+    # Check if time is between 9:30am to 4pm
+    if currTime.hour == 9 and currTime.minute < 30:
         return False
 
     return True
