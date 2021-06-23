@@ -16,8 +16,8 @@ class Stock(models.Model):
     quote = models.JSONField(default = list)
 
     # Graph Stats
-    minuteBar = models.JSONField(default = list)
-    dayBar = models.JSONField(default = list)
+    minuteBar = models.JSONField(default = dict)
+    dayBar = models.JSONField(default = dict)
 
     lastUpdateDate = models.DateField(auto_now = True)
 

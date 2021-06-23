@@ -51,7 +51,8 @@ def getDayBar(instance):
             data = np.array(r.json())
             newData = {}
             for dayData in np.nditer(data, flags=["refs_ok"], op_flags=["readwrite"]):
-                newData[dayData.item()["date"]] = dayData.item()["close"]
+                dateString = dayData.item()["date"]
+                newData[dateString] = dayData.item()["close"]
             instance.dayBar = newData
             instance.save()
         except Exception as e:
