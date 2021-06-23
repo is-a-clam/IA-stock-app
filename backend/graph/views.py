@@ -60,7 +60,7 @@ def getDayBar(instance):
         return
 
     # Get any remaining un-updated data
-    lastDay = date.fromisoformat(currDayBar.keys()[-1])
+    lastDay = date.fromisoformat(list(currDayBar.keys())[-1])
     for n in range(int((date.today() - lastDay).days)):
         dayToGet = lastDay + timedelta(n+1)
         if (dayToGet.weekday() >= 5):
