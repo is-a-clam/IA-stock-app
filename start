@@ -1,7 +1,0 @@
-#!/bin/bash
-
-trap 'kill %1' SIGINT
-source activate py3
-cd "$(dirname "$0")"
-python backend/manage.py runserver &
-npm start --prefix frontend/ | tee frontend/log.log | sed -e 's/^/[frontend] /'
