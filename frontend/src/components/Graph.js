@@ -23,36 +23,39 @@ class LineChart extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.stocks !== prevProps.stocks) {
+      console.log("loadingStockData")
       this.loadStockData()
     }
     if (this.props.increment !== prevProps.increment) {
+      console.log("loadingLabels")
       this.loadLabels()
     }
     if (this.props.range !== prevProps.range) {
+      console.log("loadingLabels")
       this.loadLabels()
     }
   }
 
   previousMarketOpen(datetime) {
     var result = datetime
-    result.set({ second: 0 })
+    result = result.set({ second: 0, millisecond: 0 })
 
     if (datetime.hour >= 16) {
       // If time is after 4pm
-      result.set({ hour: 15, minute: 59})
+      result = result.set({ hour: 15, minute: 59})
     }
     else if ((datetime.hour === 9 && datetime.minute < 30) || (datetime.hour < 9)) {
       // If time is before 9:30am
       result = result.minus(Duration.fromObject({ days: 1 }))
-      result.set({ hour: 15, minute: 59})
+      result = result.set({ hour: 15, minute: 59})
     }
 
     if (result.weekday > 5) {
       // if day is on a Sunday or Monday
-      result.set({ weekday: 5, hour: 15, minute: 59 })
+      result = result.set({ weekday: 5, hour: 15, minute: 59 })
     }
 
-    return datetime
+    return result
   }
 
   loadStockData() {
@@ -106,47 +109,53 @@ class LineChart extends React.Component {
       }
       currTime = this.previousMarketOpen(currTime.minus(incrementDuration))
     }
-
-    return labels
+    console.log(labels)
+    this.setState({labels: labels})
   }
 
   getDatasets() {
+    console.log("gettingDatasets")
     var result = []
     var increment = TimeRange.fromString(this.props.increment)
     if (increment.unit === "minute" || increment.unit === "hour") {
       for (let stockSymbol in this.state.minuteData) {
-        let stockData = this.state.labels.map((label) => {
-          return this.state.minuteData[stockSymbol][label]
-        })
         let stockColor = this.props.stocks.filter((stock) => {
           return stock.symbol === stockSymbol
-        })[0].color
-        result.splice(result.length, 0, {
-          label: stockSymbol,
-          borderColor: stockColor,
-          backgroundColor: '#00000000',
-          borderWidth: 2,
-          data: stockData,
-        })
+        })[0]?.color
+        if (stockColor) {
+          let stockData = this.state.labels.map((label) => {
+            return this.state.minuteData[stockSymbol][label]
+          })
+          result.splice(result.length, 0, {
+            label: stockSymbol,
+            borderColor: stockColor,
+            backgroundColor: '#00000000',
+            borderWidth: 2,
+            data: stockData,
+          })
+        }
       }
     }
     else {
       for (let stockSymbol in this.state.dayData) {
-        let stockData = this.state.labels.map((label) => {
-          return this.state.dayData[stockSymbol][label]
-        })
         let stockColor = this.props.stocks.filter((stock) => {
           return stock.symbol === stockSymbol
-        })[0].color
-        result.splice(result.length, 0, {
-          label: stockSymbol,
-          borderColor: stockColor,
-          backgroundColor: '#00000000',
-          borderWidth: 2,
-          data: stockData,
-        })
+        })[0]?.color
+        if (stockColor) {
+          let stockData = this.state.labels.map((label) => {
+            return this.state.dayData[stockSymbol][label]
+          })
+          result.splice(result.length, 0, {
+            label: stockSymbol,
+            borderColor: stockColor,
+            backgroundColor: '#00000000',
+            borderWidth: 2,
+            data: stockData,
+          })
+        }
       }
     }
+    console.log(result)
     return result
   }
 
@@ -175,17 +184,18 @@ class LineChart extends React.Component {
                 ticks: {
                   min: 0,
                   max: 1000,
-                  stepSize: 50,
+                  stepSize: 5,
                   callback: (val, index) => {
-                    return val % 50 === 0 ? val : '';
+                    return val % 5 === 0 ? val : '';   mb
                   },
                 },
                 gridLines: { color: "#707070" }
               }],
               xAxes: [{
-                type: 'time',
+                type: 'timeseries',
                 time: { unit: 'day' },
-                gridLines: { color: "#707070" }
+                gridLines: { color: "#707070" },
+                ticks: { source: 'labels' }
               }]
             },
             chartArea: { backgroundColor: '#2B2D30' }
