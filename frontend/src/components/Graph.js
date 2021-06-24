@@ -124,7 +124,13 @@ class LineChart extends React.Component {
         })[0]?.color
         if (stockColor) {
           let stockData = this.state.labels.map((label) => {
-            return this.state.minuteData[stockSymbol][label]
+            var price = this.state.minuteData[stockSymbol][label]
+            if (price === 0) {
+              return null
+            }
+            else {
+              return price
+            }
           })
           result.splice(result.length, 0, {
             label: stockSymbol,
@@ -180,18 +186,15 @@ class LineChart extends React.Component {
             maintainAspectRatio: false,
             legend: { display: false },
             scales: {
-              yAxes: [{
+              y: [{
                 ticks: {
                   min: 0,
                   max: 1000,
                   stepSize: 5,
-                  callback: (val, index) => {
-                    return val % 5 === 0 ? val : '';   mb
-                  },
                 },
                 gridLines: { color: "#707070" }
               }],
-              xAxes: [{
+              x: [{
                 type: 'timeseries',
                 time: { unit: 'day' },
                 gridLines: { color: "#707070" },
