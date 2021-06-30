@@ -11,14 +11,17 @@ class Stock(models.Model):
     description = models.CharField(max_length = 2000, default = "")
     country = models.CharField(max_length = 100, default = "")
 
-    # Key Stats
+    # Daily Stats
     keyStats = models.JSONField(default = list)
+
+    # Minute-based Stats
     quote = models.JSONField(default = list)
 
-    # Graph Stats
+    # Over Time Stats
     minuteBar = models.JSONField(default = dict)
     dayBar = models.JSONField(default = dict)
 
+    # Cache Indicator (for current stats)
     lastUpdateDate = models.DateField(auto_now = True)
 
 class UserProfile(models.Model):

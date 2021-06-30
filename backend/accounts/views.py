@@ -3,7 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
-from rest_framework import generics, permissions
+from django.shortcuts import render, get_object_or_404
+from rest_framework import generics, permissions, views, response, authentication
 from .serializers import RegisterSerializer
 from graph.models import UserProfile
 
@@ -11,7 +12,7 @@ from graph.models import UserProfile
 def loginSetCookie(request):
     return JsonResponse({"details": "CSRF cookie set"})
 
-class RegisterView(generics.CreateAPIView):
+class registerView(generics.CreateAPIView):
     permission_classes = [permissions.AllowAny]
 
     queryset = UserProfile.objects.all()
@@ -27,7 +28,6 @@ def loginView(request):
             {"error": "Please enter both username and password"},
             status=400,
         )
-    print("username: " + username + " password: " + password)
     user = authenticate(username=username, password=password)
     if user is not None:
         login(request, user)
@@ -38,3 +38,32 @@ def loginView(request):
 def logoutView(request):
     logout(request)
     return JsonResponse({"detail": "Logout Successful"})
+
+class deleteUserView(generics.DestroyAPIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        user = self.request.user
+        return get_object_or_404(UserProfile.objects.all(), user=user)
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+
+        # Delete user account
+        user = self.request.user
+        user.delete()
+
+        return result
+
+class changePasswordView(views.APIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, format=None):
+        newPassword = request.data['password']
+        currUser = request.user
+        currUser.set_password(newPassword)
+        currUser.save()
+
+        return response.Response({"status": "Success"})

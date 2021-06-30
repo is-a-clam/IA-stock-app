@@ -252,3 +252,426 @@ src/components/GraphTab.js
 Search for the keywords to learn more about each warning.
 To ignore, add // eslint-disable-next-line to the line before.
 
+Compiling...
+Failed to compile.
+
+src/components/TabSystem.js
+Syntax error: Missing semicolon (1:3)
+
+> 1 | We import React from "react"
+    |   ^
+  2 | import { v4 as uuidv4 } from 'uuid';
+  3 | import GraphTab from './GraphTab'
+  4 | import HomeTab from './HomeTab'
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Failed to compile.
+
+src/components/HomeTab.js
+  Line 92:24:  'Input' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/HomeTab.js
+  Line 92:24:  'Input' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/HomeTab.js
+  Line 96:24:  'Input' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/HomeTab.js
+  Line 96:24:  'Input' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Failed to compile.
+
+src/components/HomeTab.js
+  Line 96:24:  'Input' is not defined  react/jsx-no-undef
+
+Search for the keywords to learn more about each error.
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Failed to compile.
+
+src/components/HomeTab.js
+Syntax error: Floating-point numbers require a valid exponent after the 'e' (101:40)
+
+   99 |                         onChange = {this.newPasswordOnChange.bind(this)}
+  100 |                         style = {{
+> 101 |                           paddingLeft: 1em
+      |                                        ^
+  102 |                         }}
+  103 |                       />
+  104 |                     }
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+
+Compiling...
+Compiled with warnings.
+
+src/components/Graph.js
+  Line 2:10:  'Loader' is defined but never used  no-unused-vars
+  Line 2:18:  'Dimmer' is defined but never used  no-unused-vars
+
+src/components/GraphTab.js
+  Line 43:6:  React Hook React.useCallback has a missing dependency: 'props.availableStocks'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+Search for the keywords to learn more about each warning.
+To ignore, add // eslint-disable-next-line to the line before.
+

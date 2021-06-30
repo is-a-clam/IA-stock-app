@@ -124,6 +124,7 @@ class TabSystem extends React.Component {
                 },
                 render: () =>
                 <HomeTab
+                  checkLogin = {this.props.checkLogin}
                   settingsOpen = {tab.settings}
                   onOpenCloseSettings = {(state) => this.onOpenCloseSettings(state)}
                 />

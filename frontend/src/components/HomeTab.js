@@ -1,10 +1,45 @@
 import React from "react"
-import { Tab, Sidebar, Icon, Container, Header, Grid, Button } from 'semantic-ui-react'
+import { Tab, Sidebar, Icon, Container, Header, Grid, Button, Modal, Input } from 'semantic-ui-react'
+import axios from "../axiosConfig";
 
 class HomeTab extends React.Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      newPassword: ""
+    }
+  }
+
   handleSettingsOpenClose(state) {
     this.props.onOpenCloseSettings(state)
+  }
+
+  handleLogout() {
+    axios
+      .post("api/logout/", {})
+      .then((res) => { this.props.checkLogin() })
+      .catch((err) => { console.log(err) })
+  }
+
+  handleChangePassword(newPassword) {
+    axios
+      .post("api/change-password/", {
+        password: newPassword
+      })
+      .then((res) => { console.log(res) })
+      .catch((err) => { console.log(err) })
+  }
+
+  handleDeleteAccount() {
+    axios
+      .delete("api/delete-user/")
+      .then((res) => { this.props.checkLogin() })
+      .catch((err) => { console.log(err) })
+  }
+
+  newPasswordOnChange(e, {value: password}) {
+    this.setState({newPassword: password})
   }
 
   render() {
@@ -50,21 +85,46 @@ class HomeTab extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Button negative>
+                  <Button
+                    negative
+                    onClick = {() => this.handleLogout()}
+                  >
                     Logout
                   </Button>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Button negative>
-                    Change Password
-                  </Button>
+                  <Modal
+                    closeIcon
+                    trigger = { <Button negative> Change Password </Button> }
+                    header = "Change Password"
+                    content = {
+                      <Input
+                        transparent
+                        placeholder = 'New Password'
+                        onChange = {this.newPasswordOnChange.bind(this)}
+                        style = {{
+                          paddingLeft: '1.5em',
+                          paddingTop: '1em',
+                          paddingBottom: '1em',
+                        }}
+                      />
+                    }
+                    actions = {[{
+                      content: 'Change Password',
+                      positive: true,
+                      onClick: () => {this.handleChangePassword(this.state.newPassword)}
+                    }]}
+                  />
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Button negative>
+                  <Button
+                    negative
+                    onClick = {() => this.handleDeleteAccount()}
+                  >
                     Delete Account
                   </Button>
                 </Grid.Column>
@@ -92,7 +152,7 @@ class HomeTab extends React.Component {
                   marginTop: '1em',
                 }}
               >
-                Your Stocks
+                Welcome
               </Header>
             </Container>
           </Sidebar.Pusher>

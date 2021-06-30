@@ -31,7 +31,9 @@ class App extends React.Component {
   render() {
     if (this.state.loggedIn) {
       return (
-        <TabSystem />
+        <TabSystem
+          checkLogin={this.checkLogin.bind(this)}
+        />
       )
     }
     else {
