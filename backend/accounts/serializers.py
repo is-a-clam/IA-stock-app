@@ -7,7 +7,7 @@ from graph.models import UserProfile
 
 class RegisterSerializer(serializers.ModelSerializer):
 
-    username = serializers.CharField(required=True)
+    username = serializers.CharField(required=True, validators=[UniqueValidator(queryset=User.objects.all(), message="This username has already been taken")])
     email = serializers.EmailField(required=True, validators=[UniqueValidator(queryset=User.objects.all(), message="This email has already been taken")])
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
 

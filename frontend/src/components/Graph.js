@@ -166,15 +166,6 @@ class LineChart extends React.Component {
   }
 
   render() {
-    // if (this.state.loading) {
-    //   return (
-    //     <div style = {{ height: `${window.innerHeight - 80}px` }}>
-    //       <Dimmer style = {{backgroundColor: '#00000000'}} active>
-    //         <Loader />
-    //       </Dimmer>
-    //     </div>
-    //   )
-    // }
     return (
       <div style = {{ height: `${window.innerHeight - 80}px` }}>
         <Line
