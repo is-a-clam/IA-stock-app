@@ -73,7 +73,6 @@ function StockSearch(props) {
 }
 
 class GraphTab extends React.Component {
-
   handleRangeClick(e, { name }) {
     var newRange = TimeRange.fromString(name)
     var currIncrement = TimeRange.fromString(this.props.increment)
@@ -161,7 +160,7 @@ class GraphTab extends React.Component {
 
         </Grid>
 
-        <Sidebar.Pushable as = {Container}>
+        <Sidebar.Pushable as = {Container} id = 'main-content'>
 
           {/* StockListings */}
           <Sidebar
@@ -203,7 +202,7 @@ class GraphTab extends React.Component {
 
           {/* Graph */}
           <Sidebar.Pusher>
-            <Container>
+            <Container id = 'main-content' style = {{width: '920px'}}>
               <LineChart
                 range = {this.props.range}
                 increment = {this.props.increment}

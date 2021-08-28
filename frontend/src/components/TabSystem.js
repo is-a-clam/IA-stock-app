@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import GraphTab from './GraphTab'
 import HomeTab from './HomeTab'
 import TimeRange from './TimeRange'
-import { Grid, Tab, Menu, Icon } from 'semantic-ui-react'
+import { Grid, Tab, Menu, Icon, Input } from 'semantic-ui-react'
 import axios from "../axiosConfig";
 
 class TabSystem extends React.Component {
@@ -14,6 +14,8 @@ class TabSystem extends React.Component {
       activeIndex: 0,
       availableStocks: [],
       tabs: [],
+      toggleNameEdit: false,
+      toggleTempName: "",
     }
   }
 
@@ -107,6 +109,37 @@ class TabSystem extends React.Component {
     })
     this.setState({tabs: newTabs})
     axios.put("api/user-profile/", {tabs: newTabs})
+
+    axios
+      .get("api/user-stocks/")
+      .then((res) => {
+        var newUserStocks = res.data.stocks
+        for (var stock of newStocks) {
+          if (newUserStocks.indexOf(stock.symbol) == -1) {
+            if (stock.symbol) {
+              newUserStocks.splice(newUserStocks.length, 0, stock.symbol)
+            }
+          }
+        }
+        axios.put("api/user-stocks/", {stocks: newUserStocks})
+      })
+      .catch((err) => {console.log(err)})
+  }
+
+  onChangeTabName(id, newName) {
+    console.log("changeName" + newName)
+    let tabs = this.state.tabs.slice()
+    let newTabs = tabs.map((tab) => {
+      if (tab.id === id) {
+        tab.label = newName
+        return tab
+      }
+      else {
+        return tab
+      }
+    })
+    this.setState({tabs: newTabs})
+    axios.put("api/user-profile/", {tabs: newTabs})
   }
 
   render() {
@@ -145,8 +178,43 @@ class TabSystem extends React.Component {
                   <Menu.Item key = {tab.id}>
                     <Grid textAlign = 'center'>
                       <Grid.Row columns = {2}>
-                        <Grid.Column width = {10}>
-                          {tab.label}
+                        <Grid.Column
+                          width = {10}
+                          onDoubleClick = {() => this.setState({
+                            toggleNameEdit: true,
+                            toggleTempName: tab.label,
+                          })}
+                        >
+                          {this.state.toggleNameEdit ? (
+                            <Input
+                              transparent
+                              style = {{
+                                padding: '0px',
+                                margin: '0px',
+                              }}
+                              input = {{
+                                style: {
+                                  color: "white"
+                                }
+                              }}
+                              value = {this.state.toggleTempName}
+                              onChange = {(e, { value }) => {
+                                this.setState({toggleTempName: value})
+                              }}
+                              onKeyDown = {(e) => {
+                                if (e.key === 'Enter' || e.key === 'Escape') {
+                                  if (this.state.toggleTempName != "") {
+                                    this.onChangeTabName(tab.id, this.state.toggleTempName)
+                                  }
+                                  this.setState({toggleNameEdit: false})
+                                  e.preventDefault()
+                                  e.stopPropagation()
+                                }
+                              }}
+                            />
+                          ) : (
+                            tab.label
+                          )}
                         </Grid.Column>
                         <Grid.Column width = {5}>
                           <Icon

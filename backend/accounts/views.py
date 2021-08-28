@@ -1,11 +1,13 @@
 import json
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.http import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_POST
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, permissions, views, response, authentication
-from .serializers import RegisterSerializer
+from rest_framework.settings import api_settings
+from rest_framework.response import Response
+from .serializers import RegisterSerializer, ChangePasswordSerializer
 from graph.models import UserProfile
 
 @ensure_csrf_cookie
@@ -61,9 +63,8 @@ class changePasswordView(views.APIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def post(self, request, format=None):
-        newPassword = request.data['password']
-        currUser = request.user
-        currUser.set_password(newPassword)
-        currUser.save()
-
-        return response.Response({"status": "Success"})
+        serializer = ChangePasswordSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user = request.user)
+        update_session_auth_hash(request, request.user)
+        return Response(serializer.data)

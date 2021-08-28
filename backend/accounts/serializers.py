@@ -16,14 +16,23 @@ class RegisterSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', 'password')
 
     def create(self, validated_data):
-
-        print(validated_data)
-
         user = User.objects.create_user(validated_data['username'], validated_data['email'], validated_data['password'])
 
         userProfile = UserProfile.objects.create(
             user = user,
             tabs = [{"id": "home", "settings": False}, {"id": "add"}],
+            stocks = [],
         )
 
         return user
+
+class ChangePasswordSerializer(serializers.Serializer):
+
+    newPassword = serializers.CharField(write_only=True, required=True, validators=[validate_password])
+
+    def create(self, validated_data):
+        currUser = validated_data['user']
+        currUser.set_password(validated_data['newPassword'])
+        currUser.save()
+
+        return currUser

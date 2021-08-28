@@ -3,7 +3,7 @@ import numpy as np
 from datetime import datetime, date, timezone, timedelta
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, permissions, authentication, views, response
-from .serializers import StockDayBar, StockMinuteBar, StockName, StockKeyInfo, UserSerializer
+from .serializers import StockDayBar, StockMinuteBar, StockName, StockKeyInfo, UserSerializer, UserStocksSerializer
 from .models import Stock, UserProfile
 from .constants import IEX_DOMAIN, IEX_KEY
 
@@ -185,6 +185,15 @@ class UserView(generics.RetrieveUpdateAPIView):
     authentication_classes = [authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
+    def get_object(self):
+        user = self.request.user
+        return get_object_or_404(UserProfile.objects.all(), user=user)
+
+class UserStockView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserStocksSerializer
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+    
     def get_object(self):
         user = self.request.user
         return get_object_or_404(UserProfile.objects.all(), user=user)

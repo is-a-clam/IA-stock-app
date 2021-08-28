@@ -49,7 +49,6 @@ class StockListing extends React.Component {
         </Item>
       )
     }
-    console.log("Not Loading")
     return (
       <Popup
         wide

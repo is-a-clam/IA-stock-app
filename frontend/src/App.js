@@ -20,8 +20,6 @@ class App extends React.Component {
   checkLogin() {
     axios
       .get("api/login-set-cookie/")
-      .then((res) => {console.log(res)})
-      .catch((err) => {console.log(err)})
     axios
       .get("api/user-profile/")
       .then((res) => {this.setState({loggedIn: true})})
@@ -32,14 +30,14 @@ class App extends React.Component {
     if (this.state.loggedIn) {
       return (
         <TabSystem
-          checkLogin={this.checkLogin.bind(this)}
+          checkLogin = {this.checkLogin.bind(this)}
         />
       )
     }
     else {
       return (
         <Accounts
-          checkLogin={this.checkLogin.bind(this)}
+          checkLogin = {this.checkLogin.bind(this)}
         />
       )
     }

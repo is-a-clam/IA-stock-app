@@ -1,7 +1,6 @@
-.tabs .ui.container {
+#main-content {
   margin: 0px !important;
   padding-left: 1em;
-  padding-right: 350px;
   width: auto;
 }
 

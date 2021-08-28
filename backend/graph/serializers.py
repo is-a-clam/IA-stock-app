@@ -40,3 +40,10 @@ class UserSerializer(serializers.ModelSerializer):
         fields = (
             'tabs',
         )
+
+class UserStocksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = (
+            'stocks',
+        )

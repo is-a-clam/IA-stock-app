@@ -60,50 +60,50 @@ class Login extends React.Component {
     return (
       <Grid
         textAlign = 'center'
-        style={{
+        style = {{
           height: '110vh',
           background: '#202225',
         }}
-        verticalAlign='middle'
+        verticalAlign = 'middle'
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as = 'h1' inverted textAlign='center'>
             Log In
           </Header>
-          <Form size='large'>
+          <Form size = 'large'>
             <Segment>
               <Form.Input
                 fluid
-                icon='user'
-                iconPosition='left'
-                placeholder='Username'
-                name='username'
-                onChange={this.handleChange.bind(this)}
-                value={this.state.username}
-                error={this.state.usernameErr && {
+                icon = 'user'
+                iconPosition = 'left'
+                placeholder = 'Username'
+                name = 'username'
+                onChange = {this.handleChange.bind(this)}
+                value = {this.state.username}
+                error = {this.state.usernameErr && {
                   content: this.state.usernameErr,
                   pointing: 'below',
                 }}
               />
               <Form.Input
                 fluid
-                icon='lock'
-                iconPosition='left'
-                placeholder='Password'
-                name='password'
-                type='password'
-                onChange={this.handleChange.bind(this)}
-                value={this.state.password}
-                error={this.state.passwordErr && {
+                icon = 'lock'
+                iconPosition = 'left'
+                placeholder = 'Password'
+                name = 'password'
+                type = 'password'
+                onChange = {this.handleChange.bind(this)}
+                value = {this.state.password}
+                error = {this.state.passwordErr && {
                   content: this.state.passwordErr,
                   pointing: 'below',
                 }}
               />
               <Button
-                color='teal'
+                color = 'teal'
                 fluid
-                size='large'
-                onClick={this.handleSubmit.bind(this)}
+                size = 'large'
+                onClick = {this.handleSubmit.bind(this)}
               >
                 Log In
               </Button>
@@ -111,8 +111,8 @@ class Login extends React.Component {
           </Form>
           <Message>
             Don't have an account? <button
-              className="link-button"
-              onClick={this.props.onChangePage.bind(this)}
+              className = "link-button"
+              onClick = {this.props.onChangePage.bind(this)}
             >
               Sign Up
             </button>
