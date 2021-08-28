@@ -255,7 +255,7 @@ class HomeTab extends React.Component {
               </Header>
               <Container
                 style = {{
-                  width: '500px',
+                  width: '550px',
                   height: '450px',
                   margin: 'auto',
                   borderRadius: '25px',
