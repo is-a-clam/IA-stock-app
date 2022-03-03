@@ -1,12 +1,14 @@
 import React from "react"
-import { Tab, Sidebar, Icon, Container, Header, Grid, Button, Modal, Form, List } from 'semantic-ui-react'
-import axios from "../axiosConfig";
+import { Tab, Sidebar, Icon, Container, Header, Grid, Button, Modal, Form, List, Dimmer, Loader } from 'semantic-ui-react'
+import { MyStocksContainer } from './styledComponents'
+import axios from "../axiosConfig"
 
 class HomeTab extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
+      yourStocksLoading: false,
       newPassword: "",
       newPasswordModalOpen: false,
       confirmModalOpen: false,
@@ -18,6 +20,7 @@ class HomeTab extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({yourStocksLoading: true})
     axios
       .get("api/user-stocks/")
       .then((res) => {
@@ -38,7 +41,7 @@ class HomeTab extends React.Component {
               percentage: Math.round(res2[i].data.quote.changePercent * 10000) / 100,
             })
           }
-          this.setState({userStocks: userStocks})
+          this.setState({userStocks: userStocks, yourStocksLoading: false})
         })
       })
       .catch((err) => console.log(err))
@@ -253,18 +256,18 @@ class HomeTab extends React.Component {
               >
                 Your Stocks
               </Header>
-              <Container
-                style = {{
-                  width: '550px',
-                  height: '450px',
-                  margin: 'auto',
-                  borderRadius: '25px',
-                  borderStyle: 'solid',
-                  borderWidth: '2px',
-                  borderColor: '#202225',
-                  background: '#313131',
-                }}
+
+              {/* Your Stocks */}
+              <Dimmer.Dimmable
+                as = {MyStocksContainer}
+                dimmed = {this.state.yourStocksLoading}
               >
+                <Dimmer
+                  active = {this.state.yourStocksLoading}
+                  style = {{backgroundColor: '#00000000'}}
+                >
+                  <Loader>Loading</Loader>
+                </Dimmer>
                 <List
                   style = {{
                     fontSize: '20px',
@@ -272,23 +275,36 @@ class HomeTab extends React.Component {
                     height: '100%',
                     overflowY: 'scroll',
                     padding: '20px',
+                    marginTop: '0px',
                   }}
                 >
                   {this.state.userStocks.map((info) => {
                     return (
                       <List.Item
                         style = {{
-                          marginBottom: '10px'
+                          marginBottom: '10px',
                         }}
                       >
-                        <Grid>
-                          <Grid.Column width={3} floated='left'>
+                        <Grid style = {{marginLeft: '0px'}}>
+                          <Grid.Column width={3} floated='left' style = {{
+                            paddingTop: '25px',
+                            paddingLeft: '0px',
+                            paddingRight: '0px',
+                          }}>
                             {info.symbol}
                           </Grid.Column>
-                          <Grid.Column width={6} style={{textAlign: 'center'}}>
+                          <Grid.Column width={4} style = {{
+                            paddingTop: '25px',
+                            paddingLeft: '0px',
+                            paddingRight: '0px',
+                          }}>
                             {info.company}
                           </Grid.Column>
-                          <Grid.Column width={7} floated='right'>
+                          <Grid.Column width={6} floated='right' style = {{
+                            paddingTop: '25px',
+                            paddingLeft: '0px',
+                            paddingRight: '0px',
+                          }}>
                             {info.rising ? (
                               <Icon color = 'green' name = 'arrow up' />
                             ) : (
@@ -296,12 +312,24 @@ class HomeTab extends React.Component {
                             )}
                             {info.price} ({info.percentage}%)
                           </Grid.Column>
+                          <Grid.Column width={3} floated='right' style = {{
+                            paddingLeft: '0px',
+                            paddingRight: '0px',
+                          }}>
+                            <Button
+                              negative
+                              size='mini'
+                              style = {{background: 'blue'}}
+                              onClick = {() => this.props.addToDash(info.symbol)}>
+                              Add to Dashboard
+                            </Button>
+                          </Grid.Column>
                         </Grid>
                       </List.Item>
                     )
                   })}
                 </List>
-              </Container>
+              </Dimmer.Dimmable>
             </Container>
           </Sidebar.Pusher>
 

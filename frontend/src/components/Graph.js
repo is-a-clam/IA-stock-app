@@ -160,9 +160,12 @@ class LineChart extends React.Component {
         })
       }
     }
+
+    // Prune and edit labels
     var newLabels = []
     labels.forEach((label) => {
       if (!ignoredLabels.includes(label)) {
+        // Extract time from label
         if (increment.unit === "minute" || increment.unit === "hour") {
           label = label.substring(label.indexOf('T')+1, label.length-3)
         }

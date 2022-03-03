@@ -47,3 +47,10 @@ class UserStocksSerializer(serializers.ModelSerializer):
         fields = (
             'stocks',
         )
+
+class UserDashSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = (
+            'dash',
+        )

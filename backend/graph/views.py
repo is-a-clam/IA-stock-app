@@ -3,7 +3,7 @@ import numpy as np
 from datetime import datetime, date, timezone, timedelta
 from django.shortcuts import render, get_object_or_404
 from rest_framework import generics, permissions, authentication, views, response
-from .serializers import StockDayBar, StockMinuteBar, StockName, StockKeyInfo, UserSerializer, UserStocksSerializer
+from .serializers import StockDayBar, StockMinuteBar, StockName, StockKeyInfo, UserSerializer, UserStocksSerializer, UserDashSerializer
 from .models import Stock, UserProfile
 from .constants import IEX_DOMAIN, IEX_KEY
 
@@ -193,7 +193,31 @@ class UserStockView(generics.RetrieveUpdateAPIView):
     serializer_class = UserStocksSerializer
     authentication_classes = [authentication.SessionAuthentication]
     permission_classes = [permissions.IsAuthenticated]
-    
+
     def get_object(self):
         user = self.request.user
         return get_object_or_404(UserProfile.objects.all(), user=user)
+
+class UserDashView(generics.RetrieveUpdateAPIView):
+    serializer_class = UserDashSerializer
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_object(self):
+        user = self.request.user
+        return get_object_or_404(UserProfile.objects.all(), user=user)
+
+class UserDashAddView(views.APIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, format = None):
+        user = request.user
+        userProfile = get_object_or_404(UserProfile.objects.all(), user=user)
+        print(userProfile.dash)
+        try:
+            userProfile.dash[str(request.data["symbol"])] = {"amount": 0, "totalEarnings": 0}
+            userProfile.save()
+            return response.Response({"status": "Success"})
+        except:
+            return response.Response({"status": "Symbol already exists"})

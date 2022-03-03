@@ -1,7 +1,8 @@
 import React from "react"
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid'
 import GraphTab from './GraphTab'
 import HomeTab from './HomeTab'
+import Dashboard from './Dashboard'
 import TimeRange from './TimeRange'
 import { Grid, Tab, Menu, Icon, Input } from 'semantic-ui-react'
 import axios from "../axiosConfig";
@@ -16,6 +17,7 @@ class TabSystem extends React.Component {
       tabs: [],
       toggleNameEdit: false,
       toggleTempName: "",
+      toggleNameEditID: "",
     }
   }
 
@@ -127,7 +129,6 @@ class TabSystem extends React.Component {
   }
 
   onChangeTabName(id, newName) {
-    console.log("changeName" + newName)
     let tabs = this.state.tabs.slice()
     let newTabs = tabs.map((tab) => {
       if (tab.id === id) {
@@ -140,6 +141,10 @@ class TabSystem extends React.Component {
     })
     this.setState({tabs: newTabs})
     axios.put("api/user-profile/", {tabs: newTabs})
+  }
+
+  onAddStockToDash(symbol) {
+    axios.post("api/user-dash-add/", {symbol: symbol})
   }
 
   render() {
@@ -158,9 +163,20 @@ class TabSystem extends React.Component {
                 render: () =>
                 <HomeTab
                   checkLogin = {this.props.checkLogin}
+                  addToDash = {(symbol) => this.onAddStockToDash(symbol)}
                   settingsOpen = {tab.settings}
                   onOpenCloseSettings = {(state) => this.onOpenCloseSettings(state)}
                 />
+              }
+            }
+            else if (tab.id === "dashboard") {
+              return {
+                menuItem: {
+                  key: 'dashboard',
+                  icon: 'dashboard',
+                },
+                render: () =>
+                <Dashboard />
               }
             }
             else if (tab.id === "add") {
@@ -183,9 +199,10 @@ class TabSystem extends React.Component {
                           onDoubleClick = {() => this.setState({
                             toggleNameEdit: true,
                             toggleTempName: tab.label,
+                            toggleNameEditID: tab.id,
                           })}
                         >
-                          {this.state.toggleNameEdit ? (
+                          {this.state.toggleNameEdit && (this.state.toggleNameEditID === tab.id) ? (
                             <Input
                               transparent
                               style = {{

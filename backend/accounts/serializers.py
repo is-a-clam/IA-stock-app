@@ -20,7 +20,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         userProfile = UserProfile.objects.create(
             user = user,
-            tabs = [{"id": "home", "settings": False}, {"id": "add"}],
+            tabs = [{"id": "home", "settings": False}, {"id": "dashboard"}, {"id": "add"}],
             stocks = [],
         )
 

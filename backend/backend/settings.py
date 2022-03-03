@@ -72,7 +72,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS=['*']
 CORS_ALLOWED_ORIGINS=['http://localhost:3000', 'http://localhost:8000']

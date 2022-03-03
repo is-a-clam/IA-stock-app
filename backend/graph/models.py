@@ -28,3 +28,4 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     tabs = models.JSONField()
     stocks = models.JSONField()
+    dash = models.JSONField(default = dict)

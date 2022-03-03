@@ -16,6 +16,7 @@ class Accounts extends React.Component {
 
   render() {
     if (this.state.login) {
+      // Return Login View
       return (
         <Login
           onChangePage={() => this.onChangePage(false)}
@@ -24,6 +25,7 @@ class Accounts extends React.Component {
       )
     }
     else {
+      // Return Register View
       return(
         <Signup
           onChangePage={() => this.onChangePage(true)}
