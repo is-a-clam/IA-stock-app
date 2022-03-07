@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import { Grid, Container } from 'semantic-ui-react';
+import styled from 'styled-components'
+import { Grid, Container } from 'semantic-ui-react'
 
-export const StockListingRow = styled(Grid.Row) ({
+export const StockListingRow = styled(Grid.Row)({
   paddingTop: '0em !important',
-  paddingBottom: '0.5em !important'
+  paddingBottom: '0.5em !important',
 })
 
-export const MyStocksContainer = styled(Container) ({
+export const MyStocksContainer = styled(Container)({
   width: '550px !important',
   height: '450px',
   margin: 'auto',
