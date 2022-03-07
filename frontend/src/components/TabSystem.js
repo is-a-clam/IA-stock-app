@@ -117,9 +117,11 @@ class TabSystem extends React.Component {
       .then((res) => {
         var newUserStocks = res.data.stocks
         for (var stock of newStocks) {
-          if (newUserStocks.indexOf(stock.symbol) == -1) {
+          if (!(stock.symbol in newUserStocks)) {
             if (stock.symbol) {
-              newUserStocks.splice(newUserStocks.length, 0, stock.symbol)
+              newUserStocks[stock.symbol] = {
+                "addedToDash": false,
+              }
             }
           }
         }
@@ -145,6 +147,10 @@ class TabSystem extends React.Component {
 
   onAddStockToDash(symbol) {
     axios.post("api/user-dash-add/", {symbol: symbol})
+  }
+
+  onRemoveStockFromDash(symbol) {
+    axios.post("api/user-dash-remove/", {symbol: symbol})
   }
 
   render() {
@@ -176,7 +182,9 @@ class TabSystem extends React.Component {
                   icon: 'dashboard',
                 },
                 render: () =>
-                <Dashboard />
+                <Dashboard
+                  removeFromDash = {(symbol) => this.onRemoveStockFromDash(symbol)}
+                />
               }
             }
             else if (tab.id === "add") {

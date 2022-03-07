@@ -155,7 +155,6 @@ class StockKeyInfo(generics.RetrieveAPIView):
 
         # Update if lastUpdateDate is not today
         if instance.lastUpdateDate.isoformat() != date.today().isoformat():
-            print("updating date stuff")
             updateCompanyInfo(instance)
             updateKeyStats(instance)
             instance.save()
@@ -163,7 +162,6 @@ class StockKeyInfo(generics.RetrieveAPIView):
         # Update if market is open and it has been 15 minutes from last update
         if marketOpen():
             if time.time() - (instance.quote["latestUpdate"] // 1000) >= 900:
-                print("updating time stuff")
                 updateStockQuote(instance)
 
         # Update Bar values
@@ -214,10 +212,25 @@ class UserDashAddView(views.APIView):
     def post(self, request, format = None):
         user = request.user
         userProfile = get_object_or_404(UserProfile.objects.all(), user=user)
-        print(userProfile.dash)
-        try:
-            userProfile.dash[str(request.data["symbol"])] = {"amount": 0, "totalEarnings": 0}
-            userProfile.save()
-            return response.Response({"status": "Success"})
-        except:
+        symbol = str(request.data["symbol"])
+        if symbol in userProfile.dash:
             return response.Response({"status": "Symbol already exists"})
+        userProfile.dash[symbol] = {"amount": 0, "totalEarnings": 0}
+        userProfile.stocks[symbol]["addedToDash"] = True
+        userProfile.save()
+        return response.Response({"status": "Success"})
+
+class UserDashRemoveView(views.APIView):
+    authentication_classes = [authentication.SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def post(self, request, format = None):
+        user = request.user
+        userProfile = get_object_or_404(UserProfile.objects.all(), user=user)
+        symbol = str(request.data["symbol"])
+        if symbol not in userProfile.dash:
+            return response.Response({"status": "Symbol does not exists"})
+        del userProfile.dash[symbol]
+        userProfile.stocks[symbol]["addedToDash"] = False
+        userProfile.save()
+        return response.Response({"status": "Success"})

@@ -9,13 +9,13 @@ class HomeTab extends React.Component {
     super(props)
     this.state = {
       yourStocksLoading: false,
-      newPassword: "",
       newPasswordModalOpen: false,
+      newPassword: "",
+      changePasswordErr: null,
       confirmModalOpen: false,
       confirmModalText: "",
       confirmModalAction: null,
-      changePasswordErr: null,
-      userStocks: [],
+      userStocks: {},
     }
   }
 
@@ -25,21 +25,21 @@ class HomeTab extends React.Component {
       .get("api/user-stocks/")
       .then((res) => {
         var requests = []
-        for (let stock of res.data.stocks) {
+        for (let stock of Object.keys(res.data.stocks)) {
           requests.splice(requests.length, 0,
             axios.get("api/get-stock-key-info/" + stock + "/")
           )
         }
         Promise.all(requests).then((res2) => {
           var userStocks = []
-          for (let i = 0; i < res.data.stocks.length; i++) {
-            userStocks.splice(userStocks.length, 0, {
-              symbol: res.data.stocks[i],
+          for (let i = 0; i < Object.keys(res.data.stocks).length; i++) {
+            userStocks[Object.keys(res.data.stocks)[i]] = {
               company: res2[i].data.companyName,
               rising: res2[i].data.quote.change > 0,
               price: res2[i].data.quote.latestPrice,
               percentage: Math.round(res2[i].data.quote.changePercent * 10000) / 100,
-            })
+              added: Object.values(res.data.stocks)[i].addedToDash,
+            }
           }
           this.setState({userStocks: userStocks, yourStocksLoading: false})
         })
@@ -89,6 +89,13 @@ class HomeTab extends React.Component {
     this.setState({newPassword: password})
   }
 
+  handleAddToDashboard(symbol) {
+    let newUserStocks = this.state.userStocks
+    newUserStocks[symbol].added = true;
+    this.setState({userStocks: newUserStocks})
+    this.props.addToDash(symbol)
+  }
+
   render() {
     return (
       <Tab.Pane
@@ -131,6 +138,7 @@ class HomeTab extends React.Component {
                   />
                 </Grid.Column>
               </Grid.Row>
+
               {/* Logout */}
               <Grid.Row>
                 <Grid.Column>
@@ -148,6 +156,7 @@ class HomeTab extends React.Component {
                   </Button>
                 </Grid.Column>
               </Grid.Row>
+
               {/* Change Password */}
               <Grid.Row>
                 <Grid.Column>
@@ -160,7 +169,11 @@ class HomeTab extends React.Component {
                   <Modal
                     closeIcon
                     onOpen = {() => this.setState({newPasswordModalOpen: true})}
-                    onClose = {() => this.setState({newPasswordModalOpen: false})}
+                    onClose = {() => this.setState({
+                      newPasswordModalOpen: false,
+                      newPassword: "",
+                      changePasswordErr: null,
+                    })}
                     open = {this.state.newPasswordModalOpen}
                   >
                     <Modal.Header>Change Password</Modal.Header>
@@ -180,9 +193,7 @@ class HomeTab extends React.Component {
                     </Modal.Content>
                     <Modal.Actions>
                       <Button
-                        onClick = { () =>
-                          this.handleChangePassword(this.state.newPassword)
-                        }
+                        onClick = {() => this.handleChangePassword(this.state.newPassword)}
                         primary
                       >
                         Change Password
@@ -191,6 +202,7 @@ class HomeTab extends React.Component {
                   </Modal>
                 </Grid.Column>
               </Grid.Row>
+
               {/* Delete Account */}
               <Grid.Row>
                 <Grid.Column>
@@ -208,6 +220,7 @@ class HomeTab extends React.Component {
                   </Button>
                 </Grid.Column>
               </Grid.Row>
+
               {/* Confirm Popup */}
               <Modal
                 onOpen = {() => this.setState({confirmModalOpen: true})}
@@ -278,7 +291,7 @@ class HomeTab extends React.Component {
                     marginTop: '0px',
                   }}
                 >
-                  {this.state.userStocks.map((info) => {
+                  {Object.entries(this.state.userStocks).map(([symbol, info]) => {
                     return (
                       <List.Item
                         style = {{
@@ -291,7 +304,7 @@ class HomeTab extends React.Component {
                             paddingLeft: '0px',
                             paddingRight: '0px',
                           }}>
-                            {info.symbol}
+                            {symbol}
                           </Grid.Column>
                           <Grid.Column width={4} style = {{
                             paddingTop: '25px',
@@ -316,13 +329,25 @@ class HomeTab extends React.Component {
                             paddingLeft: '0px',
                             paddingRight: '0px',
                           }}>
-                            <Button
-                              negative
-                              size='mini'
-                              style = {{background: 'blue'}}
-                              onClick = {() => this.props.addToDash(info.symbol)}>
-                              Add to Dashboard
-                            </Button>
+                            {info.added ? (
+                              <Button
+                                basic inverted
+                                disabled
+                                size = 'mini'
+                                color = 'blue'
+                              >
+                                Added to Dashboard
+                              </Button>
+                            ) : (
+                              <Button
+                                basic inverted
+                                size = 'mini'
+                                color = 'blue'
+                                onClick = {() => this.handleAddToDashboard(symbol)}
+                              >
+                                Add to Dashboard
+                              </Button>
+                            )}
                           </Grid.Column>
                         </Grid>
                       </List.Item>
