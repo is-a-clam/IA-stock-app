@@ -82,7 +82,6 @@ def getMinuteBar(instance):
     currMinuteBar = instance.minuteBar.copy()
     payload = {"token": IEX_KEY}
 
-
     if not currMinuteBar:
         # If no data, get data from last month
         lastDay = date.today() - timedelta(days = 30)
@@ -97,6 +96,8 @@ def getMinuteBar(instance):
         getDay = dayToGet.strftime('%Y%m%d')
         url = IEX_DOMAIN + "/stock/" + instance.symbol + "/chart/date/" + getDay
         r = requests.get(url, params=payload)
+
+        print(r)
 
         # If r is not empty
         if r.json():
