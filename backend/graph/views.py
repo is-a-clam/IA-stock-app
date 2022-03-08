@@ -97,8 +97,6 @@ def getMinuteBar(instance):
         url = IEX_DOMAIN + "/stock/" + instance.symbol + "/chart/date/" + getDay
         r = requests.get(url, params=payload)
 
-        print(r)
-
         # If r is not empty
         if r.json():
             try:
