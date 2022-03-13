@@ -72,7 +72,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = True
+# DEBUG = True
 
 ALLOWED_HOSTS=['*']
 CORS_ALLOWED_ORIGINS=['http://localhost:3000', 'http://localhost:8000']
@@ -129,8 +129,6 @@ django_heroku.settings(locals())
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR.parent / 'public' / 'static'
 STATICFILES_DIRS = []
-
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
