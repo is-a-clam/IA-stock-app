@@ -3,6 +3,7 @@
 **Author:** Isaac Lam <br>
 
 Click [here](https://stock-app-cs-ia.herokuapp.com/) to access the app.
+If the app or certain components within it are stuck loading, please reload the webpage.
 
 However if the link is not working, you can run the app locally.
 
