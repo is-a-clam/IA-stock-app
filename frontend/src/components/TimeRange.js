@@ -40,7 +40,7 @@ class TimeRange {
         max = TimeRange.FOUR_HOUR
         break
       case '1M':
-        min = TimeRange.FOUR_HOUR
+        min = TimeRange.ONE_DAY
         max = TimeRange.ONE_DAY
         break
       case '6M':
@@ -93,7 +93,7 @@ class TimeRange {
         break
       case '4H':
         min = TimeRange.FIVE_DAY
-        max = TimeRange.ONE_MONTH
+        max = TimeRange.FIVE_DAY
         break
       case '1D':
         min = TimeRange.ONE_MONTH

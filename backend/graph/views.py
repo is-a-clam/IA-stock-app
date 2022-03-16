@@ -70,13 +70,13 @@ def getDayBar(instance):
         r = requests.get(url, params=payload)
 
         # If r is not empty
-        if r.json():
-            try:
+        try:
+            if r.json():
                 currDayBar[r.json()[0]["date"]] = r.json()[0]["close"]
                 instance.dayBar = currDayBar
                 instance.save()
-            except Exception as e:
-                print("ERROR: " + str(e))
+        except Exception as e:
+            print("ERROR: " + str(e))
 
 def getMinuteBar(instance):
     currMinuteBar = instance.minuteBar.copy()
@@ -84,10 +84,13 @@ def getMinuteBar(instance):
 
     if not currMinuteBar:
         # If no data, get data from last month
-        lastDay = date.today() - timedelta(days = 30)
+        lastDay = date.today() - timedelta(days = 5)
     else:
         # Else, get data from last updated day
         lastDay = datetime.fromisoformat(list(currMinuteBar.keys())[-1]).date()
+        if int((date.today() - lastDay).days) > 5:
+            currMinuteBar = {}
+            lastDay = date.today() - timedelta(days = 5)
 
     for n in range(int((date.today() - lastDay).days)):
         dayToGet = lastDay + timedelta(n+1)
@@ -98,15 +101,15 @@ def getMinuteBar(instance):
         r = requests.get(url, params=payload)
 
         # If r is not empty
-        if r.json():
-            try:
+        try:
+            if r.json():
                 for data in r.json():
                     dateString = data["date"] + "T" + data["minute"] + ":00"
                     currMinuteBar[dateString] = data["close"]
                 instance.minuteBar = currMinuteBar
                 instance.save()
-            except Exception as e:
-                print("ERROR: " + str(e))
+        except Exception as e:
+            print("ERROR: " + str(e))
 
 def marketOpen():
     ETtimezone = timezone(-timedelta(hours=4))
