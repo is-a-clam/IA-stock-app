@@ -126,8 +126,6 @@ def marketOpen():
     return True
 
 class StockAdd(views.APIView):
-    permission_classes = [permissions.IsAdminUser]
-
     def post(self, request, format = None):
         newStock = Stock.objects.create(
             symbol = request.data['symbol']

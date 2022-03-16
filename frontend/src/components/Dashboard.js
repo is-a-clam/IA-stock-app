@@ -165,7 +165,7 @@ class Dashboard extends React.Component {
                 }}
               >
                 <Header as='h1' inverted>
-                  Total Amount
+                  Total Profit
                 </Header>
               </Grid.Column>
             </Grid>

@@ -265,7 +265,7 @@ class HomeTab extends React.Component {
           </Sidebar>
 
           {/* HomeTab */}
-          <Sidebar.Pusher>
+          <Sidebar.Pusher dimmed={this.props.settingsOpen}>
             <Container id='main-content'>
               <Icon
                 link
