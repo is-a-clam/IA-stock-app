@@ -229,7 +229,7 @@ class HomeTab extends React.Component {
                     onClick={() =>
                       this.setState({
                         confirmModalOpen: true,
-                        confirmModalText: 'Are you sure you want to logout?',
+                        confirmModalText: 'Are you sure you want to delete your account?',
                         confirmModalAction: this.handleDeleteAccount.bind(this),
                       })
                     }

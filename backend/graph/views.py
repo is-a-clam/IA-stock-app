@@ -71,8 +71,9 @@ def getDayBar(instance):
 
         # If r is not empty
         try:
-            if r.json():
-                currDayBar[r.json()[0]["date"]] = r.json()[0]["close"]
+            rJson = r.json()
+            if rJson:
+                currDayBar[rJson[0]["date"]] = rJson[0]["close"]
                 instance.dayBar = currDayBar
                 instance.save()
         except Exception as e:
@@ -102,8 +103,9 @@ def getMinuteBar(instance):
 
         # If r is not empty
         try:
-            if r.json():
-                for data in r.json():
+            rJson = r.json()
+            if rJson:
+                for data in rJson:
                     dateString = data["date"] + "T" + data["minute"] + ":00"
                     currMinuteBar[dateString] = data["close"]
                 instance.minuteBar = currMinuteBar

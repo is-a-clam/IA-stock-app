@@ -35,7 +35,7 @@ function StockSearch(props) {
         return
       }
 
-      const re = new RegExp(_.escapeRegExp(data.value), 'i')
+      const re = new RegExp(_.escapeRegExp(data.value.toUpperCase()), 'i')
       const isMatch = result => re.test(result.symbol)
 
       dispatch({
